@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Dannersday</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:radial-gradient(circle at 50% 30%,#0f3d1c,#030805 70%);color:#fff;font-family:Impact,'Arial Black',sans-serif;overflow:hidden;text-align:center}
+  .wrap{display:flex;flex-direction:column;justify-content:center;height:100%;gap:1.2vmin}
+  .pre{letter-spacing:.5em;color:#ffdc4a;font-size:2.6vmin}
+  h1{margin:0;font-size:13vmin;line-height:1;letter-spacing:.04em;color:#2dc75c;text-shadow:0 0 2vmin #2dc75c,0 0 6vmin #0a7a2a}
+  h1 span{color:#ffd700;text-shadow:0 0 2vmin #ffd700,0 0 6vmin #af7e04}
+  .sub{font-size:3vmin;color:#fff;letter-spacing:.15em}
+  .row{display:flex;justify-content:center;gap:2vmin;margin-top:1vmin}
+  .tile{background:#000;border:.5vmin solid #2dc75c;border-radius:2vmin;padding:1.5vmin 2.5vmin;min-width:16vmin;box-shadow:0 0 3vmin #2dc75c66}
+  .num{font-size:12vmin;line-height:1;color:#2dc75c;text-shadow:0 0 2vmin #2dc75c;font-variant-numeric:tabular-nums}
+  .lbl{background:#2dc75c;color:#000;font-size:2.6vmin;letter-spacing:.2em;margin-top:1vmin;padding:.4vmin 0}
+  .date{margin-top:1vmin;font-size:3vmin;color:#000;background:#ffd700;display:inline-block;align-self:center;padding:1vmin 3vmin}
+  .tag{font-size:2.4vmin;color:#fff;letter-spacing:.1em}
+  .party{font-size:6vmin;animation:b 1s infinite alternate}@keyframes b{to{transform:translateY(-1.5vmin) rotate(6deg)}}
+</style></head><body><div class="wrap">
+  <div class="pre">THE RETURN OF</div>
+  <h1>DANNERS<span>DAY</span></h1>
+  <div class="sub">MALESSA IS COMING BACK TO THE TEAM!</div>
+  <div class="row">
+    <div class="tile"><div class="num" id="d">00</div><div class="lbl">DAYS</div></div>
+    <div class="tile"><div class="num" id="h">00</div><div class="lbl">HOURS</div></div>
+    <div class="tile"><div class="num" id="m">00</div><div class="lbl">MINUTES</div></div>
+    <div class="tile"><div class="num" id="s">00</div><div class="lbl">SECONDS</div></div>
+  </div>
+  <div class="date">JAN 4, 2027 &middot; 9:00 AM ET</div>
+  <div class="party">🎈 👶 🎉 🍼 🎊</div>
+  <div class="tag">CONGRATS ON THE BABY! NOW GET BACK HERE, WE MISS YOU!</div>
+</div>
+<script>
+  // 2027-01-04 09:00 US Eastern (EST, UTC-5) = 14:00 UTC
+  const T = Date.UTC(2027,0,4,14,0,0);
+  const p = n => String(n).padStart(2,'0');
+  function tick(){
+    let r = Math.max(0, Math.floor((T-Date.now())/1000));
+    d.textContent=p(Math.floor(r/86400)); h.textContent=p(Math.floor(r%86400/3600));
+    m.textContent=p(Math.floor(r%3600/60)); s.textContent=p(r%60);
+    if(r===0) document.querySelector('.sub').textContent='SHE\'S BACK!!! HAPPY DANNERSDAY!!!';
+  }
+  tick(); setInterval(tick,250);
+</script></body></html>
